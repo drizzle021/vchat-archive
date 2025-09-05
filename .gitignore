@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+env/
+venv/
+*.env
+*.venv/
+
+# Logs
+logs/
+*.log
+
+# IDEs
+.vscode/
+
+# Virtual environment
+.env
+
+# Chat archives
+raw_chats/
+
+#
+scratch/
