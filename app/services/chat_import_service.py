@@ -2,6 +2,7 @@ import json
 from app.db.session import SessionLocal
 from app.models.video import Video
 from app.models.message import Message
+from app.models.commenters import Commenters
 from app.utils.logging import logger
 
 def insert_messages(messages, video_id):
@@ -16,6 +17,11 @@ def insert_messages(messages, video_id):
             timestamp=msg['time'],
             author=msg['author'],
             message=msg['message']
+        ))
+
+        db.merge(Commenters(
+            author=msg['author'],
+            video_id=video_id
         ))
     db.commit()
     db.close()
