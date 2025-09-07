@@ -34,7 +34,7 @@ def download_all_chats():
         success = False
         for attempt in range(3):
             try:
-                chat = downloader.get_chat(url, message_types=["text_message"], max_messages=200000)
+                chat = downloader.get_chat(url, message_types=["text_message"], max_messages=500000)
                 with open(output_path, "w", encoding="utf-8") as f:
                     f.write("[\n")
                     first = True
