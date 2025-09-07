@@ -3,7 +3,7 @@ from scripts.download_chats import download_all_chats
 from scripts.import_chats import run_import
 
 def run_pipeline():
-    fetch_all_vods(70)
+    fetch_all_vods(20)
     download_all_chats()
     run_import()
 
