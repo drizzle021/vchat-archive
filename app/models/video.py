@@ -1,4 +1,5 @@
 from sqlalchemy import Column, String
+from sqlalchemy.dialects.postgresql import JSON
 from app.db.base import Base
 
 class Video(Base):
@@ -8,3 +9,4 @@ class Video(Base):
     title = Column(String, nullable=False)
     channel = Column(String, nullable=False)
     chat_status=Column(String, default="PENDING")
+    top_emotes = Column(JSON, nullable=True)
