@@ -14,22 +14,23 @@ def get_chats(
 ):
     db = SessionLocal()
 
-    total = db.query(Message).filter_by(video_id=video_id).count()
+    video = db.query(Video).filter_by(video_id=video_id).first()
 
-    if total == 0:
-        video = db.query(Video).filter_by(video_id=video_id).first()
-        if not video:
-            raise HTTPException(status_code=404, detail=f"Video '{video_id}' does not exist.")
+    if not video:
+        raise HTTPException(status_code=404, detail=f"Video '{video_id}' does not exist.")
+    
+    if video.chat_status != 'IMPORTED':
         raise HTTPException(status_code=404, detail="No messages found for this video.")
+ 
 
     messages = (
         db.query(Message)
         .filter_by(video_id=video_id)
-        .order_by(Message.timestamp)
-        .offset(offset)
-        .limit(limit)
-        .all()
+        .order_by(Message.timestamp_seconds)
     )
+    total = messages.count()
+
+    messages = messages.offset(offset).limit(limit).all()
 
     db.close()
 
