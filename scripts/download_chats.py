@@ -6,7 +6,6 @@ from chat_downloader import ChatDownloader
 from app.db.session import SessionLocal
 from app.models.video import Video
 from config.settings import RAW_CHAT_DIR
-from config.settings import CHAT_DOWNLOADER_TIMEOUT
 from app.utils.logging import logger
 
 
