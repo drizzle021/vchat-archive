@@ -7,5 +7,6 @@ class Message(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     video_id = Column(String, ForeignKey("videos.video_id"), nullable=False)
     timestamp = Column(String, nullable=False)
+    timestamp_seconds = Column(Integer, nullable=True)
     author = Column(String, nullable=False)
     message = Column(Text, nullable=False)
